@@ -1,0 +1,62 @@
+// messageInput.scss
+.message-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+    background-color: #c4b4d2;
+    border-radius: 8px;
+
+    textarea {
+        flex-grow: 1; // Allow textarea to fill available space
+        margin-right: 10px; // Space between textarea and buttons
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        resize: none; // Prevent manual resize
+        min-height: 40px; // Starting height
+        overflow-y: auto; // Scroll inside textarea for overflow text
+
+        &:focus {
+            outline: none;
+            border-color: #a997df; // Highlight color on focus
+        }
+    }
+
+    .action-btn {
+        padding: 8px 15px;
+        margin: 5px;
+        background-color: #b95f89;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s; // Smooth color transition on hover
+
+        &:hover {
+            background-color: #9d4870; // Darker shade on hover
+        }
+
+        &:focus {
+            outline: none; // Remove focus outline
+        }
+
+        &:active {
+            transform: scale(0.98); // Slight press effect
+        }
+    }
+
+    .EmojiPickerReact {
+        --epr-hover-bg-color: rgb(149, 219, 242);
+        --epr-text-color: #a997df;
+        --epr-emoji-size: 20px;
+        position: absolute;
+        bottom: 100%;
+        right: 0;
+        z-index: 10;
+        // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+}
+
+// https://www.npmjs.com/package/emoji-picker-react working with documentation
+// reactions picker for chat boxes

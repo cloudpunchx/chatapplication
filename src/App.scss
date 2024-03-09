@@ -1,0 +1,33 @@
+.app-container {
+    display: flex;
+    height: 100vh; // Full viewport height
+    background-color: #dccfec; // Light purple background (Thistle)
+}
+
+.sidebar {
+    width: 20%; // Sidebar takes up 20% of the container width
+    background-color: #a997df; // Purple background (Tropical Indigo)
+    overflow-y: auto; // Enable scrolling if content overflows
+}
+
+.chat-area {
+    flex-grow: 1; // Chat area takes up the remaining space
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.message-list {
+    flex-grow: 1;
+    overflow-y: auto; // Enable scrolling for the message list
+}
+
+.message-input {
+    margin-top: auto; // Push input to the bottom of the chat area
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

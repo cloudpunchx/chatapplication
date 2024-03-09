@@ -1,0 +1,35 @@
+// messageList.scss
+.message-list {
+    padding: 20px;
+    margin: 0;
+    border: 1px solid #a997df;
+    border-radius: 8px;
+    height: 75vh;
+    overflow-y: auto; // Enable vertical scrolling
+    display: flex;
+    flex-direction: column;
+
+    .message-container {
+        display: flex;
+        max-width: 80%;
+        width: fit-content; // Makes the container as wide as its content, up to max-width
+        margin-bottom: 10px;
+        word-break: break-word; // Allows long words to break and wrap to the next line
+        border-radius: 8px;
+
+        &.mine {
+            margin-left: auto; // Aligns this container to the right
+            background-color: #c9ffe2;
+        }
+
+        &.theirs {
+            margin-right: auto; // Aligns this container to the left
+            background-color: #e0ac9d;
+        }
+
+        li {
+            padding: 10px;
+            flex-grow: 1;
+        }
+    }
+}

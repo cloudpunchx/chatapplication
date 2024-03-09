@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import ChatRoomList from "../src/components/ChatRoomList/ChatRoomList.jsx";
-import MessageList from "../src/components/MessageList/MessageList.jsx";
-import MessageInput from "../src/components/MessageInput/MessageInput.jsx";
+import ChatRoomList from "./components/ChatRoomList/ChatRoomList";
+import MessageList from "./components/MessageList/MessageList";
+import MessageInput from "./components/MessageInput/MessageInput";
+import "./App.scss";
 
 function App() {
     const [currentRoom, setCurrentRoom] = useState("General");
@@ -11,14 +12,18 @@ function App() {
     };
 
     const handleSendMessage = (message) => {
-        console.log(`Sending message: ${message}`); // Placeholder action
+        console.log(`Sending message: ${message}`); // Placeholder action for now
     };
 
     return (
-        <div>
-            <ChatRoomList onRoomSelect={handleRoomSelect} />
-            <MessageList currentRoom={currentRoom} />
-            <MessageInput onSendMessage={handleSendMessage} />
+        <div className="app-container">
+            <aside className="sidebar">
+                <ChatRoomList onRoomSelect={handleRoomSelect} />
+            </aside>
+            <main className="chat-area">
+                <MessageList currentRoom={currentRoom} />
+                <MessageInput onSendMessage={handleSendMessage} />
+            </main>
         </div>
     );
 }
