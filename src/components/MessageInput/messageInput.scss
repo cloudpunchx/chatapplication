@@ -50,11 +50,11 @@
         --epr-hover-bg-color: rgb(149, 219, 242);
         --epr-text-color: #a997df;
         --epr-emoji-size: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         position: absolute;
         bottom: 100%;
         right: 0;
         z-index: 10;
-        // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 }
 

@@ -1,0 +1,39 @@
+// chatMessage.scss
+.chat-message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 10px; // Space between messages
+    background-color: #f0f0f0;
+    max-width: 80%;
+    width: fit-content; // Makes the container as wide as its content, up to max-width
+    word-break: break-word; // Allows long words to break and wrap to the next line
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    &.mine {
+        margin-left: auto; // Aligns this container to the right
+        background-color: #c9ffe2;
+    }
+
+    &.theirs {
+        margin-right: auto; // Aligns this container to the left
+        background-color: #e0ac9d;
+    }
+
+    .emoji-toggle-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .emojiReactionPicker {
+        position: absolute; // Adjust this to correctly position your emoji picker
+        bottom: 100%; // Ideally show above the message to avoid layout shift
+        right: 0;
+        z-index: 20; // Ensure it's above other content
+    }
+}

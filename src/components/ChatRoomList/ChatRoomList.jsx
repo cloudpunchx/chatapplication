@@ -10,7 +10,9 @@ function ChatRoomList({onRoomSelect, currentRoom}) {
                 <li
                     key={room}
                     onClick={() => onRoomSelect(room)}
-                    className={currentRoom === room ? "active" : ""}
+                    className={`chat-room-item ${
+                        currentRoom === room ? "active" : ""
+                    }`}
                 >
                     {room}
                 </li>

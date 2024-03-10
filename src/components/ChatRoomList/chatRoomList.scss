@@ -1,8 +1,8 @@
 // chatRoomList.scss
-li {
-    padding: 10px 20px; // Add padding for touch targets and readability
-    cursor: pointer; // Indicates the list items are clickable
-    border-bottom: 1px solid #e0e0e0; // Subtle separators for each room
+.chat-room-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #e0e0e0;
 
     &:last-child {
         border-bottom: none; // Remove border for the last item

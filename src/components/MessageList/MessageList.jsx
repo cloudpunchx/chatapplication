@@ -1,30 +1,28 @@
 // MessageList.jsx
+import React from "react";
 import "./messageList.scss";
+import ChatMessage from "../ChatMessage/ChatMessage";
 
-function MessageList({currentRoom}) {
+function MessageList({currentRoom, onReact}) {
     const messages = [
         {id: 1, sender: "Jane Doe", text: "Hello, everyone!"},
         {id: 2, sender: "John Doe", text: "Hi there!"},
-        {id: 3, sender: "Me", text: "Glad to join the conversation!"}, // This message simulates one sent by the current user
-    ]; // Placeholder data with a 'mine' message added
+        {id: 3, sender: "Me", text: "Glad to join the conversation!"},
+    ];
 
     return (
-        <div>
+        <div className="message-list-container">
             <h2>{currentRoom}</h2>
-            <ul className="message-list">
+            <div className="message-list">
                 {messages.map((msg) => (
-                    <div
+                    <ChatMessage
                         key={msg.id}
-                        className={`message-container ${
-                            msg.sender === "Me" ? "mine" : "theirs"
-                        }`}
-                    >
-                        <li>
-                            <strong>{msg.sender}</strong>: {msg.text}
-                        </li>
-                    </div>
+                        text={`${msg.sender}: ${msg.text}`}
+                        onReact={(emoji) => onReact(msg.id, emoji)}
+                        className={msg.sender === "Me" ? "mine" : "theirs"}
+                    />
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
