@@ -1,29 +1,59 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import Cookies from "js-cookie";
+
+import UsernameModal from "./components/UsernameModal/UsernameModal";
 import ChatRoomList from "./components/ChatRoomList/ChatRoomList";
 import MessageList from "./components/MessageList/MessageList";
 import MessageInput from "./components/MessageInput/MessageInput";
+import ExitChatroomBtn from "./components/ExitChatroomBtn/ExitChatroomBtn";
 import "./App.scss";
 
 function App() {
     const [currentRoom, setCurrentRoom] = useState("General");
+    const [username, setUsername] = useState("");
 
-    const handleRoomSelect = (room) => {
-        setCurrentRoom(room);
-    };
+    useEffect(() => {
+        const storedUsername = Cookies.get("username");
+        if (storedUsername) {
+            setUsername(storedUsername);
+        }
+    }, []);
+
+    const handleRoomSelect = (room) => setCurrentRoom(room);
 
     const handleSendMessage = (message) => {
-        console.log(`Sending message: ${message}`); // Placeholder action for now
+        console.log(`Sending message: ${message}`); // Placeholder for now
+    };
+
+    const handleSubmitUsername = (username) => {
+        setUsername(username);
+        Cookies.set("username", username, {expires: 0.25}); // Expires in 6 hours
+    };
+
+    const handleResetUsername = () => {
+        setUsername("");
+        Cookies.remove("username");
     };
 
     return (
         <div className="app-container">
-            <aside className="sidebar">
-                <ChatRoomList onRoomSelect={handleRoomSelect} />
-            </aside>
-            <main className="chat-area">
-                <MessageList currentRoom={currentRoom} />
-                <MessageInput onSendMessage={handleSendMessage} />
-            </main>
+            {!username && (
+                <UsernameModal onSubmitUsername={handleSubmitUsername} />
+            )}
+            {username && (
+                <>
+                    <aside className="sidebar">
+                        <ChatRoomList onRoomSelect={handleRoomSelect} />
+                        <ExitChatroomBtn
+                            onExitConfirmed={handleResetUsername}
+                        />
+                    </aside>
+                    <main className="chat-area">
+                        <MessageList currentRoom={currentRoom} />
+                        <MessageInput onSendMessage={handleSendMessage} />
+                    </main>
+                </>
+            )}
         </div>
     );
 }

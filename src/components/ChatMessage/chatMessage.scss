@@ -31,9 +31,15 @@
     }
 
     .emojiReactionPicker {
-        position: absolute; // Adjust this to correctly position your emoji picker
-        bottom: 100%; // Ideally show above the message to avoid layout shift
+        --epr-hover-bg-color: rgb(149, 219, 242);
+        --epr-text-color: #a997df;
+        --epr-emoji-size: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        position: absolute;
+        bottom: 100%;
         right: 0;
-        z-index: 20; // Ensure it's above other content
+        z-index: 10;
     }
 }
+
+// move reaction picker to below message.

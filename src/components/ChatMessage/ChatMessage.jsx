@@ -1,4 +1,3 @@
-// ChatMessage.jsx
 import React, {useState} from "react";
 import "./chatMessage.scss";
 import EmojiPicker from "emoji-picker-react";
@@ -8,14 +7,16 @@ function ChatMessage({text, onReact, className}) {
 
     return (
         <div className={`chat-message ${className}`}>
-            <span>{text}</span>
-            <button
-                onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-                aria-label="React with emoji"
-                className="emoji-toggle-btn"
-            >
-                😊
-            </button>
+            <div className="message-content">
+                <span>{text}</span>
+                <button
+                    onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+                    aria-label="React with emoji"
+                    className="emoji-toggle-btn"
+                >
+                    😊
+                </button>
+            </div>
             {showEmojiPicker && (
                 <div className="emoji-reaction-picker">
                     <EmojiPicker
