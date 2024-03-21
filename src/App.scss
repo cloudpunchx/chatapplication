@@ -5,9 +5,13 @@
 }
 
 .sidebar {
-    width: 20%; // Sidebar takes up 20% of the container width
-    background-color: #a997df; // Purple background (Tropical Indigo)
-    overflow-y: auto; // Enable scrolling if content overflows
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; // Align items to the start without extra space
+    width: 20%;
+    background-color: #a997df;
+    overflow-y: auto;
+    padding: 20px;
 }
 
 .chat-area {

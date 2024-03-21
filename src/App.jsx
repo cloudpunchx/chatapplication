@@ -1,6 +1,8 @@
+// App.jsx
 import React, {useState, useEffect} from "react";
 import Cookies from "js-cookie";
 
+import SiteLogo from "./components/SiteLogo/SiteLogo";
 import UsernameModal from "./components/UsernameModal/UsernameModal";
 import ChatRoomList from "./components/ChatRoomList/ChatRoomList";
 import MessageList from "./components/MessageList/MessageList";
@@ -43,6 +45,7 @@ function App() {
             {username && (
                 <>
                     <aside className="sidebar">
+                        <SiteLogo size="medium" />
                         <ChatRoomList onRoomSelect={handleRoomSelect} />
                         <ExitChatroomBtn
                             onExitConfirmed={handleResetUsername}

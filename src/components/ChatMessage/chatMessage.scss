@@ -1,45 +1,48 @@
 // chatMessage.scss
 .chat-message {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px;
-    border-radius: 4px;
-    margin-bottom: 10px; // Space between messages
-    background-color: #f0f0f0;
+    flex-direction: column;
     max-width: 80%;
-    width: fit-content; // Makes the container as wide as its content, up to max-width
-    word-break: break-word; // Allows long words to break and wrap to the next line
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 10px;
+    width: fit-content;
+    word-break: break-word;
+
+    &.mine,
+    &.theirs {
+        align-self: flex-start;
+    }
 
     &.mine {
-        margin-left: auto; // Aligns this container to the right
-        background-color: #c9ffe2;
+        align-self: flex-end;
     }
 
-    &.theirs {
-        margin-right: auto; // Aligns this container to the left
-        background-color: #e0ac9d;
-    }
-
-    .emoji-toggle-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
-        margin-left: 10px;
-    }
-
-    .emojiReactionPicker {
-        --epr-hover-bg-color: rgb(149, 219, 242);
-        --epr-text-color: #a997df;
-        --epr-emoji-size: 20px;
+    .message-content-wrapper {
+        border-radius: 8px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        position: absolute;
-        bottom: 100%;
-        right: 0;
-        z-index: 10;
+        padding: 8px;
+        background-color: inherit; // Ensures it inherits from .mine or .theirs but you can directly apply color here if needed
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &.mine .message-content-wrapper {
+        background-color: #c9ffe2; // Specific background for mine messages
+    }
+
+    &.theirs .message-content-wrapper {
+        background-color: #e0ac9d; // Specific background for theirs messages
+    }
+
+    .message-content {
+        width: 100%;
+    }
+
+    .timestamp-wrapper .message-time {
+        text-align: right;
+        font-size: 0.8rem;
+        margin-top: 4px;
+        width: 100%;
+        align-self: flex-end;
     }
 }
-
-// move reaction picker to below message.
