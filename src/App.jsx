@@ -1,13 +1,10 @@
 // App.jsx
 import React, {useState, useEffect} from "react";
 import Cookies from "js-cookie";
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 
-import SiteLogo from "./components/SiteLogo/SiteLogo";
 import UsernameModal from "./components/UsernameModal/UsernameModal";
-import ChatRoomList from "./components/ChatRoomList/ChatRoomList";
-import MessageList from "./components/MessageList/MessageList";
-import MessageInput from "./components/MessageInput/MessageInput";
-import ExitChatroomBtn from "./components/ExitChatroomBtn/ExitChatroomBtn";
+import ChatRoomView from "./views/ChatRoomView/ChatRoomView";
 import "./App.scss";
 
 function App() {
@@ -38,26 +35,35 @@ function App() {
     };
 
     return (
-        <div className="app-container">
-            {!username && (
-                <UsernameModal onSubmitUsername={handleSubmitUsername} />
-            )}
-            {username && (
-                <>
-                    <aside className="sidebar">
-                        <SiteLogo size="medium" />
-                        <ChatRoomList onRoomSelect={handleRoomSelect} />
-                        <ExitChatroomBtn
-                            onExitConfirmed={handleResetUsername}
-                        />
-                    </aside>
-                    <main className="chat-area">
-                        <MessageList currentRoom={currentRoom} />
-                        <MessageInput onSendMessage={handleSendMessage} />
-                    </main>
-                </>
-            )}
-        </div>
+        <BrowserRouter>
+            <div className="app-container">
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            !username ? (
+                                <UsernameModal
+                                    onSubmitUsername={handleSubmitUsername}
+                                />
+                            ) : (
+                                <Navigate replace to="/chat" />
+                            )
+                        }
+                    />
+                    <Route
+                        path="/chat"
+                        element={
+                            <ChatRoomView
+                                currentRoom={currentRoom}
+                                setCurrentRoom={setCurrentRoom}
+                                handleSendMessage={handleSendMessage}
+                                handleResetUsername={handleResetUsername}
+                            />
+                        }
+                    />
+                </Routes>
+            </div>
+        </BrowserRouter>
     );
 }
 
